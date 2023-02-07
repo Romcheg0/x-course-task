@@ -1,0 +1,59 @@
+.signin-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	padding-top: 80px;
+}
+.signin-form__avatar {
+	width: 160px;
+	height: 160px;
+}
+.signin-form__label {
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 40px;
+}
+.signin-form__input {
+	padding: 8px 32px;
+	width: 200px;
+	text-align: center;
+	font-size: 18px;
+	border-radius: 10px;
+	outline: none;
+	border: 1px solid black;
+	margin-top: 16px;
+}
+.signin-form__input::placeholder {
+	color: black;
+	font-weight: normal;
+}
+.signin-form__submit {
+	width: 200px;
+	padding: 8px 32px;
+	text-align: center;
+	font-size: 18px;
+	border-radius: 10px;
+	outline: none;
+	border: 1px solid black;
+	margin-top: 16px;
+	font-weight: bold;
+}
+@media (width <= 400px) {
+	.nav__name {
+		font-size: 20px;
+		font-weight: bold;
+	}
+	.signin-form {
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+	.signin-form__avatar {
+		width: 200px;
+		height: 200px;
+	}
+	.signin-form__input,
+	.signin-form__submit {
+		width: calc(100%);
+	}
+}
