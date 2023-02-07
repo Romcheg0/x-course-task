@@ -20,7 +20,7 @@ export default function SignIn() {
 					return (
 						<form
 							className="signin-form"
-							onSubmit={(e) => {
+							onSubmit={() => {
 								setUser(userName)
 							}}
 						>

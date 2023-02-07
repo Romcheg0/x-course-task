@@ -1,0 +1,73 @@
+.nav {
+	border: 1px solid black;
+	background: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 56px;
+	padding: 8px 8px;
+}
+.nav__name {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+}
+.nav__links {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	width: 35%;
+	height: 100%;
+}
+.nav__links.hidden {
+	display: none;
+}
+.nav__links__burger {
+	display: none;
+}
+.nav__links__cart {
+	width: 40px;
+	height: 40px;
+	margin: auto 16px auto 0;
+}
+.nav__links__signout {
+	height: 36px;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 6px;
+	border: 1px solid black;
+	background: lightgray;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 6px 16px;
+	cursor: pointer;
+	margin-right: 16px;
+	white-space: nowrap;
+}
+.nav__links__user {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-right: 16px;
+}
+.nav__links__avatar {
+	width: 40px;
+	height: 40px;
+	margin-right: 8px;
+}
+.nav__links__name {
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+	font-size: 24px;
+}
+@media (width <= 400px) {
+	.nav__name {
+		font-size: 20px;
+		font-weight: bold;
+	}
+}

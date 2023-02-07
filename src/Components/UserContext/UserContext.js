@@ -7,8 +7,13 @@ export function UserContextProvider(props) {
 			value={{
 				user,
 				setUser: function (newUser) {
-					setUserState(newUser)
-					localStorage.setItem('user', newUser)
+					if (newUser) {
+						setUserState(newUser)
+						localStorage.setItem('user', newUser)
+					} else {
+						setUserState()
+						localStorage.removeItem('user')
+					}
 				},
 			}}
 		>
