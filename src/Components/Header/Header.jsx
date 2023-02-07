@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { UserContext } from '../UserContext/UserContext'
 import './Header.css'
 export default function Header() {
@@ -18,9 +19,9 @@ export default function Header() {
 										alt="menu"
 										className="nav__links__burger"
 									/>
-									<a href="/cart.html" className="nav__links__cart">
+									<Link to="/cart" className="nav__links__cart">
 										<img src="../assets/cart.png" alt="Shopping cart" />
-									</a>
+									</Link>
 									<button
 										type="button"
 										className="nav__links__signout"
@@ -36,7 +37,7 @@ export default function Header() {
 											alt="User avatar"
 											className="nav__links__avatar"
 										/>
-										<span className="nav__links__name">{user.username}</span>
+										<span className="nav__links__name">{user}</span>
 									</div>
 								</div>
 							)}

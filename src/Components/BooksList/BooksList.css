@@ -1,0 +1,129 @@
+.books-list {
+	padding: 20px 16px;
+}
+.filters {
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 70%;
+	min-width: 300px;
+}
+.filters__input-wrapper {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	align-items: center;
+	flex-wrap: nowrap;
+	min-width: 230px;
+	width: 40%;
+	height: 30px;
+	margin-right: 10%;
+}
+#filters__search-input {
+	width: 100%;
+	height: 30px;
+	outline: none;
+	padding-right: 30px;
+	font-size: 18px;
+}
+#filters__search-input::placeholder {
+	color: black;
+	font-size: 18px;
+}
+.search-button {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+	background: transparent;
+	border: none;
+}
+.search-button img {
+	width: 100%;
+	height: 100%;
+}
+#filters__sort-select {
+	min-width: 180px;
+	width: 30%;
+	height: 30px;
+	border-radius: 4px;
+	appearance: none;
+	background: url(../../../public/assets/arrow-down.png) right no-repeat;
+	background-size: contain;
+}
+.books-container {
+	padding-top: 24px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.book-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	padding: 16px;
+	width: 440px;
+	border: 1px solid black;
+	min-height: 720px;
+	max-height: 760px;
+}
+.book-card__cover {
+	width: 100%;
+	height: 550px;
+}
+.book-card__title {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	width: 100%;
+	margin-top: 8px;
+}
+.book-card__author {
+	font-size: 18px;
+	width: 100%;
+	text-align: left;
+	margin-top: 8px;
+}
+.book-card__controls {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-top: 20px;
+}
+.book-card__controls__price {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+}
+.book-card__controls__view {
+	font-size: 18px;
+	font-weight: bold;
+	padding: 8px 24px;
+	border-radius: 8px;
+	border: 1px solid black;
+	color: black;
+	text-decoration: none;
+	background: #f5f5f5;
+}
+@media (width >= 320px) and (width <= 1200px) {
+	.filters {
+		width: 80%;
+		justify-content: space-between;
+		margin: auto auto;
+	}
+}
+@media (width >= 320px) and (width <= 768px) {
+	.filters__input-wrapper {
+		margin-bottom: 16px;
+	}
+}
