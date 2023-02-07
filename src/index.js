@@ -8,6 +8,7 @@ import {
 	UserContext,
 	UserContextProvider,
 } from './Components/UserContext/UserContext'
+import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
@@ -19,16 +20,18 @@ root.render(
 					<Route path="/" element={<App />}>
 						<Route index element={<SignIn />} />
 						<Route path="sign_in" element={<SignIn />} />
-						<Route
-							path="books_list"
-							element={
-								<div>
-									<UserContext.Consumer>
-										{({ user }) => <h1>{user}</h1>}
-									</UserContext.Consumer>
-								</div>
-							}
-						/>
+						<Route element={<ProtectedRoute />}>
+							<Route
+								path="books_list"
+								element={
+									<div>
+										<UserContext.Consumer>
+											{({ user }) => <h1>{user}</h1>}
+										</UserContext.Consumer>
+									</div>
+								}
+							/>
+						</Route>
 					</Route>
 				</Routes>
 			</BrowserRouter>

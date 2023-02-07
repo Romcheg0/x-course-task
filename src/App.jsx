@@ -1,9 +1,9 @@
-import Header from './Components/Header/Header'
+// import Header from './Components/Header/Header'
 import { Outlet } from 'react-router-dom'
 function App() {
 	return (
 		<div className="App">
-			<Header />
+			{/* <Header /> */}
 			<main>
 				<Outlet />
 			</main>
