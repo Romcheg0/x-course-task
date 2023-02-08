@@ -2,11 +2,38 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './BooksList.css'
 import booksP from '../../api/booksList'
+import BookCard from '../BookCard/BookCard'
 export default function BooksList() {
 	const [error, setError] = useState(null)
 	const [isLoaded, setIsLoaded] = useState(false)
-	let [books, setBooks] = useState([])
-
+	const [books, setBooks] = useState([])
+	const [searchQuery, setSearchQuery] = useState('')
+	const [sortQuery, setSortQuery] = useState(-1)
+	function getFilteredBy(array, value) {
+		return array.filter((item) =>
+			item[value].toLowerCase().includes(searchQuery.toLowerCase())
+		)
+	}
+	useEffect(() => {
+		let arr = books.concat()
+		arr.sort((a, b) => {
+			switch (sortQuery) {
+				case 1:
+					return a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1
+				case 2:
+					return a.title.toLowerCase() < b.title.toLowerCase() ? 1 : -1
+				case 3:
+					return a.price - b.price
+				case 4:
+					return b.price - a.price
+				case 5:
+					return a.author.toLowerCase() < b.author.toLowerCase() ? -1 : 1
+				case 6:
+					return a.author.toLowerCase() < b.author.toLowerCase() ? 1 : -1
+			}
+		})
+		setBooks(arr)
+	}, [sortQuery])
 	useEffect(() => {
 		booksP.then(
 			(result) => {
@@ -34,12 +61,23 @@ export default function BooksList() {
 							id="filters__search-input"
 							maxLength="50"
 							placeholder="Search by book name"
+							value={searchQuery}
+							onInput={(e) => {
+								setSearchQuery(e.target.value)
+							}}
 						/>
 						<button type="button" className="search-button">
 							<img src="../assets/search.png" alt="search" />
 						</button>
 					</div>
-					<select name="sort" id="filters__sort-select" defaultValue="0">
+					<select
+						name="sort"
+						id="filters__sort-select"
+						defaultValue="0"
+						onChange={(e) => {
+							setSortQuery(e.target.selectedIndex)
+						}}
+					>
 						<option value="0" disabled>
 							Sort the books by...
 						</option>
@@ -52,29 +90,8 @@ export default function BooksList() {
 					</select>
 				</section>
 				<section className="books-container">
-					{books.map((book) => {
-						return (
-							<div className="book-card" key={book.id}>
-								<img
-									src={book.image ? book.image : '../assets/imageNotFound.png'}
-									alt={book.title}
-									className="book-card__cover"
-								/>
-								<h3 className="book-card__title">{book.title}</h3>
-								<span className="book-card__author">{book.author}</span>
-								<div className="book-card__controls">
-									<span className="book-card__controls__price">
-										{book.price}
-									</span>
-									<Link
-										to={`view/${book.id}`}
-										className="book-card__controls__view"
-									>
-										View
-									</Link>
-								</div>
-							</div>
-						)
+					{getFilteredBy(books, 'title').map((book) => {
+						return <BookCard book={book} key={book.id} />
 					})}
 				</section>
 			</section>
