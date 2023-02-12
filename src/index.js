@@ -10,6 +10,10 @@ import {
 } from './Components/UserContext/UserContext'
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
 import BooksList from './Components/BooksList/BooksList'
+import {
+	BooksContext,
+	BooksContextProvider,
+} from './Components/BooksContext/BooksContextProvider'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
@@ -21,8 +25,16 @@ root.render(
 					<Route path="/" element={<App />}>
 						<Route index element={<SignIn />} />
 						<Route path="sign_in" element={<SignIn />} />
+
 						<Route element={<ProtectedRoute />}>
-							<Route path="books_list" element={<BooksList />} />
+							<Route
+								path="books_list"
+								element={
+									<BooksContextProvider>
+										<BooksList />{' '}
+									</BooksContextProvider>
+								}
+							/>
 						</Route>
 					</Route>
 				</Routes>

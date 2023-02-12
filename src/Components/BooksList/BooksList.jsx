@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect, useContext } from 'react'
 import './BooksList.css'
-import booksP from '../../api/booksList'
 import BookCard from '../BookCard/BookCard'
+import { BooksContext } from '../BooksContext/BooksContextProvider'
 export default function BooksList() {
-	const [error, setError] = useState(null)
+	const booksP = useContext(BooksContext)
 	const [isLoaded, setIsLoaded] = useState(false)
 	const [books, setBooks] = useState([])
 	const [searchQuery, setSearchQuery] = useState('')
 	const [sortQuery, setSortQuery] = useState(-1)
+	useEffect(() => {
+		if (booksP.books) {
+			setBooks(booksP.books)
+			setIsLoaded(true)
+		}
+	}, [booksP])
 	function getFilteredBy(array, value) {
 		return array.filter((item) =>
 			item[value].toLowerCase().includes(searchQuery.toLowerCase())
@@ -34,21 +39,7 @@ export default function BooksList() {
 		})
 		setBooks(arr)
 	}, [sortQuery])
-	useEffect(() => {
-		booksP.then(
-			(result) => {
-				setIsLoaded(true)
-				setBooks(result)
-			},
-			(error) => {
-				setIsLoaded(true)
-				setError(error)
-			}
-		)
-	}, [])
-	if (error) {
-		return <h1>Ooops!!! An error occured ({`${error}`})</h1>
-	} else if (!isLoaded) {
+	if (!isLoaded) {
 		return <h1>Loading...</h1>
 	} else {
 		return (
