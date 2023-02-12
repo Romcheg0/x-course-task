@@ -1,0 +1,20 @@
+.cart {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	background: gray;
+}
+.cart__table {
+	background: lightgray;
+	width: 90%;
+	border-collapse: collapse;
+}
+.table__head__th {
+	font-size: 18px;
+	font-weight: 500;
+	text-align: left;
+}
+.table__head__th:nth-child(1) {
+	padding-left: 88px;
+}

@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import './BookPage.css'
 import { useParams } from 'react-router-dom'
 import { BooksContext } from '../BooksContext/BooksContextProvider'
+import { CartContext } from '../CartContextProvider/CartContextProvider'
 
 export default function BookPage() {
 	let params = useParams()
 	let { books, setBooks } = useContext(BooksContext)
+	let { cart, setCart } = useContext(CartContext)
 	let [booksAmount, setBooksAmount] = useState(1)
 	let [book, setBook] = useState({})
 	useEffect(() => {
@@ -106,7 +108,40 @@ export default function BookPage() {
 								: 0}
 						</span>
 					</div>
-					<button type="submit" className="book__order__submit">
+					<button
+						type="submit"
+						className="book__order__submit"
+						onClick={(e) => {
+							e.preventDefault()
+							if (cart.find((el) => el.id === book.id)) {
+								setCart([
+									...cart.filter((el) => el.id !== book.id),
+									{
+										id: book.id,
+										image: book.image
+											? book.image
+											: './assets/imageNotFound.png',
+										title: book.title,
+										price: book.price,
+										amount: booksAmount,
+									},
+								])
+							} else {
+								setCart([
+									...cart,
+									{
+										id: book.id,
+										image: book.image
+											? book.image
+											: './assets/imageNotFound.png',
+										title: book.title,
+										price: book.price,
+										amount: booksAmount,
+									},
+								])
+							}
+						}}
+					>
 						Add to cart
 					</button>
 				</form>
