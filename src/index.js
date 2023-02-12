@@ -21,25 +21,10 @@ root.render(
 						<Route path="/" element={<App />}>
 							<Route index element={<SignIn />} />
 							<Route path="sign_in" element={<SignIn />} />
-
 							<Route element={<ProtectedRoute />}>
 								<Route path="books_list">
-									<Route
-										index
-										element={
-											// <BooksContextProvider>
-											<BooksList />
-											// </BooksContextProvider>
-										}
-									/>
-									<Route
-										path="view/:bookId"
-										element={
-											// <BooksContextProvider>
-											<BookPage />
-											// </BooksContextProvider>
-										}
-									/>
+									<Route index element={<BooksList />} />
+									<Route path=":bookId" element={<BookPage />} />
 								</Route>
 							</Route>
 						</Route>

@@ -15,7 +15,7 @@ export default function BookCard({ book }) {
 			<span className="book-card__author">{book.author}</span>
 			<div className="book-card__controls">
 				<span className="book-card__controls__price">{book.price}</span>
-				<Link to={`view/${book.id}`} className="book-card__controls__view">
+				<Link to={`${book.id}`} className="book-card__controls__view">
 					View
 				</Link>
 			</div>
