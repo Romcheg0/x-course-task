@@ -4,41 +4,48 @@ import './index.css'
 import App from './App'
 import SignIn from './Components/SignIn/SignIn'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import {
-	UserContext,
-	UserContextProvider,
-} from './Components/UserContext/UserContext'
+import { UserContextProvider } from './Components/UserContext/UserContext'
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
 import BooksList from './Components/BooksList/BooksList'
-import {
-	BooksContext,
-	BooksContextProvider,
-} from './Components/BooksContext/BooksContextProvider'
+import { BooksContextProvider } from './Components/BooksContext/BooksContextProvider'
+import BookPage from './Components/BookPage/BookPage'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
 	<React.StrictMode>
 		<UserContextProvider>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<App />}>
-						<Route index element={<SignIn />} />
-						<Route path="sign_in" element={<SignIn />} />
+			<BooksContextProvider>
+				<BrowserRouter>
+					<Routes>
+						<Route path="/" element={<App />}>
+							<Route index element={<SignIn />} />
+							<Route path="sign_in" element={<SignIn />} />
 
-						<Route element={<ProtectedRoute />}>
-							<Route
-								path="books_list"
-								element={
-									<BooksContextProvider>
-										<BooksList />{' '}
-									</BooksContextProvider>
-								}
-							/>
+							<Route element={<ProtectedRoute />}>
+								<Route path="books_list">
+									<Route
+										index
+										element={
+											// <BooksContextProvider>
+											<BooksList />
+											// </BooksContextProvider>
+										}
+									/>
+									<Route
+										path="view/:bookId"
+										element={
+											// <BooksContextProvider>
+											<BookPage />
+											// </BooksContextProvider>
+										}
+									/>
+								</Route>
+							</Route>
 						</Route>
-					</Route>
-				</Routes>
-			</BrowserRouter>
+					</Routes>
+				</BrowserRouter>
+			</BooksContextProvider>
 		</UserContextProvider>
 	</React.StrictMode>
 )
