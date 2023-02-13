@@ -64,7 +64,7 @@ export default function Cart() {
 				<>
 					<img
 						className="no-books__img"
-						src="./assets/noBooks.png"
+						src="assets/noBooks.png"
 						alt="No books chosen"
 					/>
 					<h3 className="no-books__text">You haven't chosen any books yet.</h3>

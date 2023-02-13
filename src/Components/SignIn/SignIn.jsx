@@ -25,7 +25,7 @@ export default function SignIn() {
 							}}
 						>
 							<img
-								src="../assets/avatar.png"
+								src="assets/avatar.png"
 								alt="user avatar"
 								className="signin-form__avatar"
 							/>

@@ -26,7 +26,7 @@ export default function BookPage() {
 					&lt; Back
 				</span>
 				<img
-					src={book.image ? book.image : '../assets/imageNotFound.png'}
+					src={book.image ? book.image : 'assets/imageNotFound.png'}
 					alt={book.title}
 					className="book__cover"
 				/>

@@ -5,7 +5,6 @@ import { BooksContext } from '../BooksContext/BooksContextProvider'
 
 export default function BooksList() {
 	const { books, setBooks } = useContext(BooksContext)
-	// const [isLoaded, setIsLoaded] = useState(false);
 	const [searchQuery, setSearchQuery] = useState('')
 	const [sortQuery, setSortQuery] = useState(-1)
 
@@ -53,7 +52,7 @@ export default function BooksList() {
 						}}
 					/>
 					<button type="button" className="search-button">
-						<img src="../assets/search.png" alt="search" />
+						<img src="assets/search.png" alt="search" />
 					</button>
 				</div>
 				<select

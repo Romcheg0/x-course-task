@@ -5,7 +5,7 @@ export default function BookCard({ book }) {
 	return (
 		<div className="book-card">
 			<img
-				src={book.image ? book.image : '../assets/imageNotFound.png'}
+				src={book.image ? book.image : 'assets/imageNotFound.png'}
 				alt={book.title}
 				className="book-card__cover"
 			/>

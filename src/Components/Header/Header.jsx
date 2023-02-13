@@ -15,12 +15,12 @@ export default function Header() {
 							{user && (
 								<div className="nav__links">
 									<img
-										src="../assets/burger.png"
+										src="assets/burger.png"
 										alt="menu"
 										className="nav__links__burger"
 									/>
 									<Link to="/cart" className="nav__links__cart">
-										<img src="../assets/cart.png" alt="Shopping cart" />
+										<img src="assets/cart.png" alt="Shopping cart" />
 									</Link>
 									<button
 										type="button"
@@ -33,7 +33,7 @@ export default function Header() {
 									</button>
 									<div className="nav__links__user">
 										<img
-											src="../assets/avatar.png"
+											src="assets/avatar.png"
 											alt="User avatar"
 											className="nav__links__avatar"
 										/>
