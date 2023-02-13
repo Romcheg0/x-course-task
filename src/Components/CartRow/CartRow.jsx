@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { CartContext } from '../Components/CartContextProvider/CartContextProvider'
+import { CartContext } from '../CartContextProvider/CartContextProvider'
 import './CartRow.css'
 export default function CartRow({ book }) {
 	let [bookAmount, setBookAmount] = useState(book.amount)
@@ -15,7 +15,6 @@ export default function CartRow({ book }) {
 				amount: bookAmount,
 			},
 		])
-		console.log(cart)
 	}, [bookAmount])
 	return (
 		<tr className="row" key={book.id}>
@@ -51,7 +50,9 @@ export default function CartRow({ book }) {
 							type="button"
 							id="row__order__amount_up"
 							onClick={() => {
-								setBookAmount(parseInt(bookAmount <= 41 ? bookAmount : 41) + 1)
+								setBookAmount(
+									parseInt(bookAmount && bookAmount <= 41 ? bookAmount : 41) + 1
+								)
 							}}
 						>
 							&#9650;
@@ -69,7 +70,7 @@ export default function CartRow({ book }) {
 				</div>
 			</td>
 			<td className="row__total-price">
-				{book.price ? (parseFloat(book.price) * bookAmount).toFixed(2) : 0}
+				{book.price ? (parseFloat(book.price) * bookAmount).toFixed(2) : 0} $
 			</td>
 			<td className="row__remove">
 				<button

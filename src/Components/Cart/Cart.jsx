@@ -1,12 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
-import CartRow from '../../CartRow/CartRow'
+import { Link, useNavigate } from 'react-router-dom'
+import CartRow from '../CartRow/CartRow'
 import { CartContext } from '../CartContextProvider/CartContextProvider'
 import './Cart.css'
 export default function Cart() {
 	let { cart, setCart } = useContext(CartContext)
+	const navigate = useNavigate()
 	useEffect(() => {}, [cart])
 	return (
 		<section className="cart">
+			<span className="cart__back" onClick={() => navigate(-1)}>
+				&lt; Back
+			</span>
+			<h1 className="cart__header">My cart</h1>
 			{cart.length > 0 ? (
 				<>
 					<table className="cart__table">
@@ -22,9 +28,13 @@ export default function Cart() {
 							</tr>
 						</thead>
 						<tbody className="table__body">
-							{cart.map((book) => {
-								return <CartRow book={book} key={book.id} />
-							})}
+							{cart
+								.sort((a, b) => {
+									return a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1
+								})
+								.map((book) => {
+									return <CartRow book={book} key={book.id} />
+								})}
 						</tbody>
 					</table>
 					<div className="total-amount">
@@ -36,12 +46,29 @@ export default function Cart() {
 										(sum, cur) => sum + parseFloat(cur.price * cur.amount),
 										0
 									)
-									.toFixed(2)}
+									.toFixed(2)}{' '}
+							$
 						</span>
 					</div>
+					<button
+						className="cart__order"
+						onClick={(e) => {
+							e.preventDefault()
+							setCart([])
+						}}
+					>
+						Order
+					</button>
 				</>
 			) : (
-				<h1>No books</h1>
+				<>
+					<img
+						className="no-books__img"
+						src="./assets/noBooks.png"
+						alt="No books chosen"
+					/>
+					<h3 className="no-books__text">You haven't chosen any books yet.</h3>
+				</>
 			)}
 		</section>
 	)

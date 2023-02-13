@@ -1,0 +1,12 @@
+.footer {
+	height: 64px;
+	text-align: center;
+	vertical-align: middle;
+}
+.footer a {
+	font-size: 24px;
+	font-weight: 500;
+	color: black;
+	line-height: 64px;
+	text-decoration: none;
+}
