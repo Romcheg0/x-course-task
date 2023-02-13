@@ -1,0 +1,15 @@
+.page__back {
+	position: absolute;
+	top: 64px;
+	left: 24px;
+	text-align: left;
+	align-self: flex-start;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 600;
+}
+.page-nf__header {
+	text-align: center;
+	margin-bottom: 64px;
+	margin-top: 64px;
+}

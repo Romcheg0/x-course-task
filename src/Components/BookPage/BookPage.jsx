@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './BookPage.css'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Navigate } from 'react-router-dom'
 import { BooksContext } from '../BooksContext/BooksContextProvider'
 import { CartContext } from '../CartContextProvider/CartContextProvider'
+import PageNotFound from '../PageNotFound/PageNotFound'
 
 export default function BookPage() {
 	let params = useParams()
@@ -17,6 +18,7 @@ export default function BookPage() {
 				setBook(element)
 			}
 		})
+		!book.id && navigate('*')
 	}, [books])
 
 	return (

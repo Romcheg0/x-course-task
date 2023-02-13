@@ -11,6 +11,7 @@ import { BooksContextProvider } from './Components/BooksContext/BooksContextProv
 import BookPage from './Components/BookPage/BookPage'
 import { CartContextProvider } from './Components/CartContextProvider/CartContextProvider'
 import Cart from './Components/Cart/Cart'
+import PageNotFound from './Components/PageNotFound/PageNotFound'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
@@ -28,8 +29,10 @@ root.render(
 									<Route path="books_list">
 										<Route index element={<BooksList />} />
 										<Route path=":bookId" element={<BookPage />} />
+										<Route path="*" element={<PageNotFound />} />
 									</Route>
 									<Route path="cart" element={<Cart />} />
+									<Route path="*" element={<PageNotFound />} />
 								</Route>
 							</Route>
 						</Routes>
