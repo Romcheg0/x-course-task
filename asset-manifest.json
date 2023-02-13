@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/x-course-task/static/css/main.cef72377.css",
+    "main.js": "/x-course-task/static/js/main.a5163019.js",
+    "index.html": "/x-course-task/index.html",
+    "main.cef72377.css.map": "/x-course-task/static/css/main.cef72377.css.map",
+    "main.a5163019.js.map": "/x-course-task/static/js/main.a5163019.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cef72377.css",
+    "static/js/main.a5163019.js"
+  ]
+}
