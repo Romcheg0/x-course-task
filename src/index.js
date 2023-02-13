@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
 import SignIn from './Components/SignIn/SignIn'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { UserContextProvider } from './Components/UserContext/UserContext'
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
 import BooksList from './Components/BooksList/BooksList'
@@ -19,7 +19,7 @@ root.render(
 		<UserContextProvider>
 			<BooksContextProvider>
 				<CartContextProvider>
-					<BrowserRouter>
+					<HashRouter>
 						<Routes>
 							<Route path="/" element={<App />}>
 								<Route index element={<SignIn />} />
@@ -33,7 +33,7 @@ root.render(
 								</Route>
 							</Route>
 						</Routes>
-					</BrowserRouter>
+					</HashRouter>
 				</CartContextProvider>
 			</BooksContextProvider>
 		</UserContextProvider>
